@@ -5,7 +5,7 @@ static int top = 0;
 static int stack[SIZE];
 
 void push(int element) {
-    if ((top + 1) >= SIZE) {
+    if ((top + 1) > SIZE) {
         fprintf(stderr, "Stack Overflow");
     }
     else {
@@ -15,7 +15,7 @@ void push(int element) {
 }
 
 int pop() {
-    if (isEmpty()) {
+    if (isEmpty() == 1) {
         fprintf(stderr, "Stack underflow");
     }
     else {
@@ -34,7 +34,7 @@ int isEmpty() {
 }
 
 int stack_top() {
-    if (isEmpty()) {
+    if (isEmpty() == 1) {
         fprintf(stderr, "Stack empty");
     }
     else {
