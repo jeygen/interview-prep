@@ -44,12 +44,10 @@ int main(void) {
 	print_LL(head);
 
 	// search demo
-	struct node *n = NULL;	
- 	n = malloc(sizeof(n));
-	n = search_LL(head, 20);
-	fprintf(stdout, "%d\n", n->data);	
-
-	
+	struct node *nd = NULL;	
+ 	nd = malloc(sizeof(nd));
+	nd = search_LL(head, 20);
+	fprintf(stdout, "%d\n", nd->data);	
 
 	return 0;
 }
