@@ -40,13 +40,16 @@ int main(void) {
 	second->next = tail;
 	tail->next = NULL;
 
+	// print demo
 	print_LL(head);
 
+	// search demo
 	struct node *n = NULL;	
  	n = malloc(sizeof(n));
-	n->next = head;
-	n = search_LL(n, 20);
-	fprintf(stdout, "%d", n->data);	
+	n = search_LL(head, 20);
+	fprintf(stdout, "%d\n", n->data);	
+
+	
 
 	return 0;
 }
