@@ -24,13 +24,11 @@ void print_LL(struct node* n) {
 	}
 }
 
-void insert_LL(struct node* head_ref, struct node* new_n, int data) {
-//	struct node* new_n = malloc(sizeof(new_n));
+void insert_LL(struct node** head_ref, int data) {
+	struct node* new_n = malloc(sizeof(new_n));
 	new_n->data = data;
-	new_n->next = head_ref;
-	head_ref = new_n;
-	//print_LL(head);
-	//printf("%d", head_ref->data);
+	new_n->next = *head_ref;
+	*head_ref = new_n;
 }
 
 int main(void) {
@@ -61,9 +59,9 @@ int main(void) {
 	fprintf(stdout, "%d\n", nd->data);	
 
 	// insert demo
-	//struct node* head_ref = malloc(sizeof(head_ref));
-	struct node* new_head = malloc(sizeof(new_head));
-	insert_LL(head, new_head, 80);
+	//struct node* head_ref = malloc(sizeof(head_ref))
+	//struct node* new_head = malloc(sizeof(new_head));
+	insert_LL(&head, 80);
 	//printf("%d", head->data);
 	print_LL(head);
 
