@@ -1,3 +1,5 @@
+// Singly Linked List w/o Global Variables
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -22,6 +24,31 @@ void print_LL(struct node* n) {
 	}
 }
 
+void insert_LL(struct node** head_ref, int data) {
+	struct node* new_n = malloc(sizeof(new_n));
+	new_n->data = data;
+	new_n->next = *head_ref;
+	*head_ref = new_n;
+}
+
+void delete_LL(struct node* head_ref, int data) {
+	struct node* new_n = malloc(sizeof(new_n));
+	struct node* prev = malloc(sizeof(prev));
+	new_n = head_ref->next;
+	if (new_n->data == data) {
+		head_ref = new_n->next;
+		return;
+	}
+	while (new_n->next != NULL) {
+		prev = new_n;
+		new_n = new_n->next;
+		if (new_n->data == data) {
+			prev->next = new_n->next;
+			return;
+		}
+	}	
+}	
+
 int main(void) {
 	struct node* head = NULL;
         struct node* second = NULL;
@@ -42,12 +69,28 @@ int main(void) {
 
 	// print demo
 	print_LL(head);
+ 	printf("\n");	
 
 	// search demo
 	struct node *nd = NULL;	
  	nd = malloc(sizeof(nd));
 	nd = search_LL(head, 20);
 	fprintf(stdout, "%d\n", nd->data);	
+ 	printf("\n");	
 
+	// insert demo
+	insert_LL(&head, 80);
+	print_LL(head);
+ 	printf("\n");	
+
+	// delete demo
+	delete_LL(head, 20);
+	print_LL(head);
+ 	printf("\n");	
+
+	free(head);
+	free(second);
+	free(tail);
+	
 	return 0;
 }
