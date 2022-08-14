@@ -38,22 +38,32 @@ class ll:
         self.head = n
     
     def deleteLL(self, data=None):
-        if (self.head is not None):
-            if (self.head.data == data):
-                self.head = self.head.next
-                self.head = None
+        # Store head node
+        temp = self.head
+ 
+        # If head node itself holds the key to be deleted
+        if (temp is not None):
+            if (temp.data == data):
+                self.head = temp.next
+                temp = None
                 return
-        while (self.head is not None):
-            if self.head.data == data:
+ 
+        # Search for the key to be deleted, keep track of the
+        # previous node as we need to change 'prev.next'
+        while(temp is not None):
+            if temp.data == data:
                 break
-            prev = self.head
-            self.head = self.head.next
-
-        if (self.head == None):
+            prev = temp
+            temp = temp.next
+ 
+        # if key was not present in linked list
+        if(temp == None):
             return
-
-        prev.next = self.head.next
-        self.head = None
+ 
+        # Unlink the node from linked list
+        prev.next = temp.next
+ 
+        temp = None
 
 list = ll()
 list.head = node(0)
