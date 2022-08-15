@@ -1,0 +1,4 @@
+/*
+Implement algo to det if string has all unique char.
+What if no additional data structures.
+*/
