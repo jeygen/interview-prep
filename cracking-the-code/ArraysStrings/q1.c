@@ -2,15 +2,6 @@
 Implement algo to det if string has all unique char.
 What if no additional data structures.
 
-i = 0
-for (j = i+1; j < string.length ; j++)
-	ch = string[i]
-	if (ch == string[j]
-		return not unique
-	else
-		i++
-	if i == string.length
-		return unique
 */
 
 #include <stdio.h>
@@ -19,6 +10,8 @@ for (j = i+1; j < string.length ; j++)
 
 
 void unique_check(char s[], int size) {
+	if (size > 256)
+		fprintf(stdout, "\nString is n'unique pas\n");
 	if (size == 1)
 		fprintf(stdout, "\nString is unique\n");
 	
