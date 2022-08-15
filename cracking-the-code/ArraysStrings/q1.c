@@ -15,33 +15,39 @@ for (j = i+1; j < string.length ; j++)
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 
-int unique_check(char s[], int size) {
+void unique_check(char s[], int size) {
+	if (size == 1)
+		fprintf(stdout, "\nString is unique\n");
+	
 	int i = 0;
 	int j = 0;
 	for(j = i+1; j < size; j++) {
 		char c = s[i];
-		if (c == string[j])
-			fprintf(stdout, "String not unique");
-			return 0;	 
+		if (c == s[j]) 
+			fprintf(stdout, "\nString not unique\n");
 		else
 			i++;
-		if (i == size)
-			fprintf(stdout, "String is unique");
-			return 1;
+		if (i == (size-1))
+			fprintf(stdout, "\nString is unique\n");
 	}
 }
 
+int main(int argc, char *argv[]) {
+	if (argc != 2) {
+		printf("Incorrect num of args");
+		return EXIT_FAILURE; 
+	}
 
-
-int main(void) {
+	unique_check(argv[1], strlen(argv[1]));
 	
-	char s[] = "hello";
-	char s2[] = "joshua";
+	//char s[] = "hello";
+	//char s2[] = "joshua";
 	
-	unique_checker(s, sizeof(s)/sizeof(s[]));
-	unique_checker(s2, sizeof(s2)/sizeof(s2[]));
+	//unique_check(s, strlen(s));
+	//unique_check(s2, strlen(s2));
 
 	return EXIT_SUCCESS;
 }
