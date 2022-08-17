@@ -26,8 +26,28 @@ void reverse(char *c) {
 	free(c2);
 }	
 
+void reverseBook(char *str) {
+	char *end = str;
+	char tmp;
+	if (str) { 
+		while (*end) { // find end of string
+			++end;
+		}
+		--end; // set one char back, since last char is null
+
+		// swap char from start of string w/ end of *str until pointers meet in middle
+		while (str < end) {
+			tmp = *str;
+			*str++ = *end;
+			*end-- = tmp;
+		}
+	}
+}
+
 int main(int argc, char *argv[]) {
 	reverse(argv[1]);
+	printf("%s\n", argv[1]);
+	reverseBook(argv[1]);
 	printf("%s\n", argv[1]);
 	return 0;
 }
