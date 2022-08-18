@@ -1,0 +1,9 @@
+Q: 
+Describe how to implement 3 stacks in a single array.
+
+A: 
+Set three different tops to point at their respective stacks in the
+array. The stacks could have a set size within the array or the
+stacks could shift when over/underflows cause overlaps.
+
+
