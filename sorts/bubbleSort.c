@@ -17,7 +17,7 @@ void swap(int* x, int* y);
 void swap(int* x, int* y) {
 	int temp = *x;
         *x = *y;
-         *y = temp;
+        *y = temp;
 }  
   
  void bubble_sort(int* a, int length) {
@@ -31,17 +31,15 @@ void swap(int* x, int* y) {
           }
   }
   
-  int main(void) {
-          int i;
-          int a[] = {43, 22, 12, 433, 1, 432, 12};
-          int length = sizeof(a)/sizeof(a[0]);
-          bubble_sort(a, length);
-          for(i=0; i < length; i++)
-              printf("%d ", a[i]);
-          return 0;
-  }}
+int main(void) {
+	int i;
+	int a[] = {43, 22, 12, 433, 1, 432, 12};
 	int length = sizeof(a)/sizeof(a[0]);
-	bubble_sort(a, length)
-	printf("%s", a);
+
+	bubble_sort(a, length);
+
+	for(i=0; i < length; i++)
+		printf("%d ", a[i]);
+
 	return 0;
 }
