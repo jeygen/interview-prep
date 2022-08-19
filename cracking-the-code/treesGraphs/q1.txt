@@ -1,0 +1,4 @@
+Q:
+Implement a function to check if a binary tree is balanced.
+Assume bal tree has sub-tree heights within one.
+
