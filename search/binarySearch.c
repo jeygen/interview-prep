@@ -22,11 +22,11 @@ For sorted arrays
 #include <stdio.h>
 
 int binary_Search(int* arr, int x, int low, int high) {
-	int mid = (low + high) / 2;
-	
+	int mid = low + (high - low) / 2;
+
 	if (low > high) {
 		fprintf(stderr, "\nMistake in given range\n");
-		return 0;
+		return -1;
 	}
 	else if (x == arr[mid]) {
 		return mid;
@@ -38,6 +38,7 @@ int binary_Search(int* arr, int x, int low, int high) {
 		binary_Search(arr, x, low, mid-1);
 	}		
 }
+
 
 int main(void) {
 	int a[] = {1,44,88,2341,12343,132413,1241212};
