@@ -1,37 +1,46 @@
-// https://www.geeksforgeeks.org/linked-list-in-java/
-// Linkedlists are prebuilt in java
+public class LL {
+	public Node head;
 
-// Java Program to Demonstrate
-// Implementation of LinkedList
-// class
+	public void addTail(int data) {
+		if (this.head == null) {
+			this.head = new Node(data);
+		}
+		Node end = new Node(data);
+		Node n = this.head;
+		while (n.next != null) {
+			n = n.next;
+		}
+		n.next = end;
+	}	
+	
+	public void rm(int data) {
+		if (data == this.head.data) {
+			this.head = this.head.next;
+			return;
+		}
+		Node n = new Node(data);
+		while (n.next != null) {
+			n = n.next;
+			if (data == n.data) {
+				this.head.next = n.next;
+		} 	
+		}
+	}
 
-// Importing required classes
-import java.util.*;
+	public void print() {
+		Node n = this.head;
+		while (n.next != null) {
+			n = n.next;
+			System.out.println(n.data);
+		}
+	}
 
-// Main class
-public class GFG {
 
-	// Main driver method
-	public static void main(String args[])
-	{
-		// Creating object of the
-		// class linked list
-		LinkedList<String> ll = new LinkedList<String>();
-
-		// Adding elements to the linked list
-		ll.add("A");
-		ll.add("B");
-		ll.addLast("C");
-		ll.addFirst("D");
-		ll.add(2, "E");
-
-		System.out.println(ll);
-
-		ll.remove("B");
-		ll.remove(3);
-		ll.removeFirst();
-		ll.removeLast();
-
-		System.out.println(ll);
+	public static void main(String[] args) {
+		LL list = new LL();
+		list.addTail(1);
+		list.addTail(2);
+		list.addTail(3);
+		list.print();
 	}
 }
