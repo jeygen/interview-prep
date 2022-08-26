@@ -2,7 +2,6 @@
 Bubble Sort
 Time: O(n^2)
 Space: O(1)
-
 bubble(A)
 for (i=0; i<A.length-1; i++)
 	for(j=0; j <A.length-1- i; j++)
@@ -12,7 +11,6 @@ for (i=0; i<A.length-1; i++)
 Quicksort
 Time: O(n log n)
 Space: O(log n)
-
 function QUICKSORT(ARRAY, START, END)			
     # base case size <= 1	
     if START >= END then		
@@ -35,11 +33,9 @@ function PARTITION(ARRAY, START, END)
         end if						           
     end loop							        
     //return PIVOTINDEX – 1		
-    # i changed this, now it works
+    # i changed this, now it works, work through this
     swap(array[PIVOTINDEX], array[END])
     return PIVOTINDEX
-
-
 */
 
 #include <stdio.h>
@@ -85,7 +81,7 @@ int partition(int* a, int start, int end) {
                         pivotindex++;
                 }
         }
-        swap(&a[pivotindex], &a[end]);
+        swap(&a[pivotindex], &a[end]); // double check this method 
         return pivotindex;
 }
   
