@@ -39,10 +39,20 @@ int binary_Search(int* arr, int x, int low, int high) {
 	}		
 }
 
+int linear_Search(int* arr, int x, int length) {
+	int i;
+	for (i=0; i<length; i++) {
+		if (arr[i] == x) {
+			return i;
+		}
+	}
+	return -1;
+}
 
 int main(void) {
 	int a[] = {1,44,88,2341,12343,132413,1241212};
 	int length = sizeof(a)/sizeof(a[0]);
 	printf("Element position is %d\n", binary_Search(a, 88, 0, length-1)); 
+	printf("Element position is %d\n", linear_Search(a, 12343, 0, length-1)); 
 	return 0;
 }
