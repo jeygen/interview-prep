@@ -12,7 +12,7 @@ for (i=0; i<A.length-1; i++)
 
 #include <stdio.h>
   
-void swap(int* x, int* y);
+void swap(int*, int*);
   
 void swap(int* x, int* y) {
 	int temp = *x;
@@ -20,16 +20,17 @@ void swap(int* x, int* y) {
         *y = temp;
 }  
   
- void bubble_sort(int* a, int length) {
-            int i, j;
-          for (i=0; i<length-1; i++) {
-                  for(j=0; j <length-1-i; j++) {
-                         if (a[j] > a[j+1]) {
-                                 swap(&a[j], &a[j+1]);
-                          }
-                  }
-          }
-  }
+void bubble_sort(int* a, int length) {
+        int i, j;
+        for (i=0; i<length-1; i++) {
+                for(j=0; j <length-1-i; j++) {
+                        if (a[j] > a[j+1]) {
+                                swap(&a[j], &a[j+1]);
+                        }
+                }
+        }
+}
+
   
 int main(void) {
 	int i;
