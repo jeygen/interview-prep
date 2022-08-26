@@ -13,6 +13,16 @@ public class Sorts {
 		}
 	return arr;
 	}
+
+	public static void main(String[] args) {
+		int[] arr = {33,234,1,2,345,5};
+		Sorts s = new Sorts();
+		arr = s.bubbleSort(arr);
+		for(int i : arr) {
+			System.out.println(i);
+		}
+	}
+}
 						
 					
 					
