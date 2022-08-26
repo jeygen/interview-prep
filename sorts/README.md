@@ -14,7 +14,11 @@
 
 - quick sort matches merge sort but is n^2 in worst case
 - space is logn so better if pivot point chosen avoids worse case time 
-- great for uniform, randomly distributed data
+- great for uniform, randomly distributed data as random pivot point probably closer to avg than min/max
+- bad if pivot point is max value
+
 
 - if really worried about worst case and space use heapsort
+
+
 
