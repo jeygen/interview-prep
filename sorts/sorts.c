@@ -34,7 +34,11 @@ function PARTITION(ARRAY, START, END)
             PIVOTINDEX = PIVOTINDEX + 1		  
         end if						           
     end loop							        
-    return PIVOTINDEX – 1		
+    //return PIVOTINDEX – 1		
+    # i changed this, now it works
+    swap(array[PIVOTINDEX], array[END])
+    return PIVOTINDEX
+
 
 */
 
@@ -42,7 +46,9 @@ function PARTITION(ARRAY, START, END)
   
 void swap(int*, int*);
 void bubble_sort(int*, int);
-  
+void quick_sort(int*, int, int);
+int partition(int*, int, int);
+
 void swap(int* x, int* y) {
 	int temp = *x;
         *x = *y;
@@ -79,7 +85,8 @@ int partition(int* a, int start, int end) {
                         pivotindex++;
                 }
         }
-        return pivotindex-1;
+        swap(&a[pivotindex], &a[end]);
+        return pivotindex;
 }
   
 int main(void) {
