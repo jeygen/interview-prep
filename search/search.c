@@ -1,6 +1,6 @@
 /*
 Binary Search
-T: O(n)
+T: O(logn)
 For sorted arrays
 
     binarySearch(arr, x, low, high)
