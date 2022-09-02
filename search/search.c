@@ -34,9 +34,12 @@ int binary_Search(int* arr, int x, int low, int high) {
 	else if (x > arr[mid]) {
 		binary_Search(arr, x, mid+1, high);
 	}
-	else {
+	else if (x < arr[mid]) {
 		binary_Search(arr, x, low, mid-1);
 	}		
+	else {
+		return -1;
+	}
 }
 
 int linear_Search(int* arr, int x, int length) {
