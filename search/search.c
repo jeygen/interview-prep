@@ -25,7 +25,6 @@ int binary_Search(int* arr, int x, int low, int high) {
 	int mid = low + (high - low) / 2;
 
 	if (low > high) {
-		fprintf(stderr, "\nMistake in given range\n");
 		return -1;
 	}
 	else if (x == arr[mid]) {
@@ -55,7 +54,8 @@ int linear_Search(int* arr, int x, int length) {
 int main(void) {
 	int a[] = {1,44,88,2341,12343,132413,1241212};
 	int length = sizeof(a)/sizeof(a[0]);
-	printf("Element position is %d\n", binary_Search(a, 88, 0, length-1)); 
-	printf("Element position is %d\n", linear_Search(a, 12343, 0, length-1)); 
+	printf("Element position is %d\n", binary_Search(a, 2341, 3, 3)); 
+	printf("Element position is %d\n", linear_Search(a, 12343, length)); 
 	return 0;
 }
+
