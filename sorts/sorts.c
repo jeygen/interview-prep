@@ -10,32 +10,30 @@ for (i=0; i<A.length-1; i++)
 
 Quicksort
 Time: O(n log n)
-Space: O(log n)
-function QUICKSORT(ARRAY, START, END)			
-    # base case size <= 1	
-    if START >= END then		
-        return						      
-    end if							         
-    PIVOTINDEX = PARTITION(ARRAY, START, END)
-    QUICKSORT(ARRAY, START, PIVOTINDEX – 1)	
-    QUICKSORT(ARRAY, PIVOTINDEX + 1, END)		
-end function		
+Space: O(log n) "in place"
 
-function PARTITION(ARRAY, START, END)			
-    PIVOTVALUE = ARRAY[END]				        
-    PIVOTINDEX = START					        
-    loop INDEX from START to END			
-        if ARRAY[INDEX] <= PIVOTVALUE	
-            TEMP = ARRAY[INDEX]       
-            ARRAY[INDEX] = ARRAY[PIVOTINDEX]	
-            ARRAY[PIVOTINDEX] = TEMP			
-            PIVOTINDEX = PIVOTINDEX + 1		  
-        end if						           
-    end loop							        
-    //return PIVOTINDEX – 1		
-    # i changed this, now it works, work through this
-    swap(array[PIVOTINDEX], array[END])
-    return PIVOTINDEX
+1. Choose a pivot
+2. Place all elements smaller than pivot to the left of pivot
+3. Place all elements greater than pivot to the right of pivot
+4. Quick sort the left side
+5. Quick sort the right side
+
+QuickSort(A, low, high)
+        if low < high // insures at least two ele, and correct args
+            p = partition(A, low, high)
+            QuickSort(A, low, p-1)
+            QuickSort(A, p+1, high)
+
+Partition(A, low, high)
+        pivot = A[high] // selects last element as pivot, can be any
+        // search for elements smaller than pivot
+        i = low - 1 // index of smaller element, starts at -1 and counts up to locates smaller element to swap
+        for j = low, j < high, j++
+            if A[j] <= pivot // if current element is smaller than pivot
+                i = i + 1 // increment index of smaller element
+                swap A[i] with A[j]
+        swap A[i+1] with A[high] // puts pivot left of higher elements
+        return i + 1 // returns pivot location
 */
 
 #include <stdio.h>
@@ -63,26 +61,25 @@ void bubble_sort(int* a, int length) {
 }
 
 void quicksort(int* a, int start, int end) {
-        if (start >= end) {
-                return;
+        if (start < end) {
+                int pivotindex = partition(a, start, end);
+                quicksort(a, start, pivotindex-1); // sort left side
+                quicksort(a, pivotindex+1, end); // sort right side
         }
-        int pivotindex = partition(a, start, end);
-        quicksort(a, start, pivotindex-1);
-        quicksort(a, pivotindex+1, end);
 }
 
 int partition(int* a, int start, int end) {
         int pivotvalue = a[end];
-        int pivotindex = start;
+        int swap_index = start - 1;
         int j;
         for (j=start; j<end; j++) {
                 if (a[j] <= pivotvalue) {
-                        swap(&a[pivotindex], &a[j]);
-                        pivotindex++;
+                        swap_index++;
+                        swap(&a[swap_index], &a[j]);
                 }
         }
-        swap(&a[pivotindex], &a[end]); // double check this method 
-        return pivotindex;
+        swap(&a[swap_index+1], &a[end]); // double check this method 
+        return swap_index+1; // returns new pivot location
 }
   
 int main(void) {
