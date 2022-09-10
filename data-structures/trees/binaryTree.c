@@ -15,7 +15,7 @@ struct t_node *create_node(int data) {
     return new_node;
 }
 
-void print_tree(struct t_node *root) {
+void print_tree_inorder(struct t_node *root) {
     if (root == NULL) return;
     print_tree(root->left);
     printf("%d ", root->data);
@@ -28,6 +28,6 @@ int main(void) {
     root->right = create_node(3);
     root->left->left = create_node(4);
     root->left->right = create_node(5);
-    print_tree(root);
+    print_tree_inorder(root);
     return 0;
 }
