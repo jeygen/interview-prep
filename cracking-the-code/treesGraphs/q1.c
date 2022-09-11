@@ -12,6 +12,8 @@ Assume bal tree has sub-tree heights within one.
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
+#define SIZE 5
 
 struct node {
     int data;
@@ -19,16 +21,33 @@ struct node {
     struct node * right;
 };
 
+void inorder(struct node*);
+bool bstcheck();
+struct node * createNode(int);
 
-void inorder_traversal(struct node *root) {
+int a[SIZE];
+
+bool bstcheck() {
+    for (int i = 0; i < SIZE - 1; i++) {
+        if (a[i] > a[i + 1]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+void inorder(struct node *root) {
     if (root == NULL) return;
-    inorder_traversal(root->left);
-    printf("%d", *root);
-    inorder_traversal(root->right);
+    inorder(root->left);
+    printf("%d ", root->data);
+    static int i = 0;
+    a[i] = root->data;
+    i++;
+    inorder(root->right);
 }
 
 struct node * newNode(int data) {
-    struct node * x;
+    struct node *x = (struct node *)malloc(sizeof(struct node));
     x->data = data;
     x->left = NULL;
     x->right = NULL;
@@ -36,10 +55,17 @@ struct node * newNode(int data) {
 }
  
 int main() {
-    struct node * root = (struct node *)malloc(sizeof(struct node));
-    root = newNode(10);
-    inorder_traversal(root);
+    struct node * root = newNode(10);
+    root->left = newNode(19);
+    root->right = newNode(11);
+    root->left->left = newNode(13);
+    root->left->right = newNode(21);
+   // root = newNode(10);
+    inorder(root);
+    printf("\n%d", bstcheck());
+    return 0;
 }
+
 
 
 
