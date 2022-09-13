@@ -14,5 +14,12 @@ public class BinTree {
     int get() {
         return this.data;
     }
+
+    void inorderPrint(BinTree root) {
+        inorderPrint(root.left);
+        System.out.print(root.data + " ");
+        inorderPrint(root.right);
+    }
+
 }
 
