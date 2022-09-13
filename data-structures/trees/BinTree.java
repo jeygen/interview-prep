@@ -1,3 +1,4 @@
+
 public class BinTree {
     private BinTree left;
     private BinTree right;
@@ -10,7 +11,14 @@ public class BinTree {
     void set(int data) {
         this.data = data;
     }
+    
+    void setL(BinTree node) {
+        this.left = node;
+    }
 
+    void setR(BinTree node) {
+        this.right = node;
+    }
     int get() {
         return this.data;
     }
@@ -21,5 +29,22 @@ public class BinTree {
         inorderPrint(root.right);
     }
 
+    public static void main(String[] args) {
+        BinTree a = new BinTree(5);
+        BinTree b = new BinTree(8);
+        BinTree c = new BinTree(4);
+        BinTree d = new BinTree(2);
+        BinTree e = new BinTree(10);
+        a.setL(b);
+        a.setR(c);
+        b.setL(d);
+        b.setR(e);
+    }
 }
+
+
+
+        
+
+
 
