@@ -8,22 +8,24 @@ public class BinTree {
         this.data = data;
     }
 
-    void set(int data) {
+    public void set(int data) {
         this.data = data;
     }
     
-    void setL(BinTree node) {
+    public void setL(BinTree node) {
         this.left = node;
     }
 
-    void setR(BinTree node) {
+    public void setR(BinTree node) {
         this.right = node;
     }
-    int get() {
+
+    public int get() {
         return this.data;
     }
 
-    void inorderPrint(BinTree root) {
+    public static void inorderPrint(BinTree root) {
+        if (root == null) return;
         inorderPrint(root.left);
         System.out.print(root.data + " ");
         inorderPrint(root.right);
@@ -39,6 +41,7 @@ public class BinTree {
         a.setR(c);
         b.setL(d);
         b.setR(e);
+        BinTree.inorderPrint(a);
     }
 }
 
