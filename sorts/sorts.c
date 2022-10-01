@@ -81,6 +81,8 @@ int partition(int* a, int start, int end) {
         swap(&a[swap_index+1], &a[end]); // double check this method 
         return swap_index+1; // returns new pivot location
 }
+
+
   
 int main(void) {
 	int i;
