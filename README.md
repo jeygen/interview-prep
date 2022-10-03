@@ -3,4 +3,7 @@ Repo to practice algos, data structures, and problem solving.
 
 
 ## to-do
-- add bfs, dfs
+- match strings
+- print max, min width
+- find mode
+- find unique consonants 
