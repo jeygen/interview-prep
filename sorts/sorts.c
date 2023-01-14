@@ -37,6 +37,7 @@ Partition(A, low, high)
 */
 
 #include <stdio.h>
+#define N 4 // Number of elements in the sets
   
 void swap(int*, int*);
 void bubble_sort(int*, int);
@@ -82,7 +83,65 @@ int partition(int* a, int start, int end) {
         return swap_index+1; // returns new pivot location
 }
 
+/*
+ * Propose and Reject (Gale-Shapely 1962)
+ *
+ * Finds stable match relative to desired group
+ *
+ * O(n^2) 
+ */
 
+
+// Preference list for each element, where the first index represents the element and the subsequent indices represent their preferences
+int prefer[2*N][N] = {
+    {3, 2, 1, 0}, // Element 0 (man) preferences: {3, 2, 1, 0}
+    {3, 2, 0, 1}, // Element 1 (man) preferences: {3, 2, 0, 1}
+    {0, 1, 2, 3}, // Element 2 (woman) preferences: {0, 1, 2, 3}
+    {0, 1, 3, 2}, // Element 3 (woman) preferences: {0, 1, 3, 2}
+    {2, 3, 0, 1}, // Element 4 (woman) preferences: {2, 3, 0, 1}
+    {2, 3, 1, 0}, // Element 5 (woman) preferences: {2, 3, 1, 0}
+    {1, 0, 2, 3}, // Element 6 (woman) preferences: {1, 0, 2, 3}
+    {1, 0, 3, 2}  // Element 7 (woman) preferences: {1, 0, 3, 2}
+};
+
+// Function to find stable matching using Gale-Shapley algorithm
+void stable_matching(int n) {
+    int wPartner[N]; // Array to store current partners of women
+    bool mFree[N];   // Array to store whether men are free or not
+    memset(wPartner, -1, sizeof(wPartner)); // Initialize all partners to -1
+    memset(mFree, false, sizeof(mFree));    // Initialize all men to be not free
+    int freeCount = n;
+
+    // Iterate until all men have a partner
+    while (freeCount > 0) {
+        int m;
+        for (m = 0; m < n; m++)
+            if (!mFree[m])
+                break;
+
+        for (int i = 0; i < n && !mFree[m]; i++) {
+            int w = prefer[m][i]; // Get the highest-ranked woman from man's preference list
+
+            if (wPartner[w - n] == -1) { // If the woman is not currently engaged
+                wPartner[w - n] = m;  // Engage the woman with the man
+                mFree[m] = true;     // Mark the man as engaged
+                freeCount--;         // Decrement the number of free men
+            } else {
+                int m1 = wPartner[w - n]; // Get the current partner of the woman
+                if (prefer[w][m] < prefer[w][m1]) { // If the woman prefers the new man over her current partner
+                    wPartner[w - n] = m;  // Engage the woman with the new man
+                    mFree[m] = true;     // Mark the new man as engaged
+                    mFree[m1] = false;   // Mark the previous man as not engaged
+                }
+            }
+        }
+    }
+
+    // Print the stable matching
+    printf("Woman   Man\n");
+    for (int i = 0; i < n; i++)
+        printf(" %d     %d);
+}
   
 int main(void) {
 	int i;
